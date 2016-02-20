@@ -1,0 +1,33 @@
+1. Suppose you want to write two methods that differ in only a few lines of code; you can now just
+   pass the code of the parts that differ as an argument (this programming technique is shorter,
+   clearer, and less error prone than the common tendency to use copy and paste).
+
+2. The Java 8 feature of passing code to methods (and also being able to return it and incorporate
+   it into data structures) also provides access to a whole range of additional techniques that are
+   commonly referred to as functional-style programming.
+
+3. For introductory purposes, a stream is a sequence of data items that are conceptually produced one at a time.
+   Java 8 adds a Streams API (note the uppercase S) in java.util.stream based on this idea;
+   Stream<T> is a sequence of items of type T. You can think of it as a fancy iterator for now.
+   Another advantage is that Java 8 can transparently run your pipeline of Stream operations on several CPU cores on
+   disjoint parts of the input—this is parallelism almost for free instead of hard work using Threads.
+
+4. The second programming concept added to Java 8 is the ability to pass a piece of code to an API.
+   Java 8 adds the ability to pass methods (your code) as arguments to other methods.
+
+5. The word function in programming languages is commonly used as a synonym for method,
+   particularly a static method; this is in addition to it being used for mathematical function, one
+   without side effects.
+
+6. Methods and lambdas as first-class citizens . So the designers of Java 8 decided to allow methods to be values—to make
+    it easier for you to program.
+
+7.As well as allowing (named) methods to be first-class values, Java 8 allows a richer idea of
+  functions as values, including lambdas[4] (or anonymous functions). For example, you can now
+  write (int x) -> x + 1 to mean “the function that, when called with argument x, returns the value
+  x + 1.”
+
+8. Default methods are added to Java 8 largely to support library designers by enabling them to
+   write more evolvable interfaces. They’re important because you’ll increasingly encounter them in interfaces,
+   but because relatively few programmers will need to write default methods themselves and because they facilitate program
+   evolution rather than helping write any particular program, we keep the explanation here short and example-based:
