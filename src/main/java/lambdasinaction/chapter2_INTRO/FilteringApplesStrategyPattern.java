@@ -1,19 +1,30 @@
-package lambdasinaction.chap2;
+package lambdasinaction.chapter2_INTRO;
 
 import java.util.*;
 
-public class FilteringApples{
+//No java8 here. this is the old way of passing behaviour :)
+
+//	- Behavior parameterization is the ability for a method to take multiple different behaviors as
+//	parameters and use them internally to accomplish different behaviors.
+//	- Behavior parameterization lets you make your code more adaptive to changing requirements and
+//	saves on engineering efforts in the future.
+// 	- Passing code is a way to give new behaviors as arguments to a method. But it’s verbose prior to Java 8.
+//  - Anonymous classes helped a bit before Java 8 to get rid of the verbosity associated with declaring
+//  multiple concrete classes for an interface that are needed only once.
+//  - The Java API contains many methods that can be parameterized with different behaviors, which
+//	include sorting, threads, and GUI handling.
+public class FilteringApplesStrategyPattern {
 
 	public static void main(String ... args){
 
 		List<Apple> inventory = Arrays.asList(new Apple(80,"green"), new Apple(155, "green"), new Apple(120, "red"));	
 
 		// [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
-		List<Apple> greenApples = filterApplesByColor(inventory, "green");
+		List<Apple> greenApples = filterApplesByColorOldSchool(inventory, "green");
 		System.out.println(greenApples);
 
 		// [Apple{color='red', weight=120}]
-		List<Apple> redApples = filterApplesByColor(inventory, "red");
+		List<Apple> redApples = filterApplesByColorOldSchool(inventory, "red");
 		System.out.println(redApples);
 
 		// [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
@@ -36,9 +47,12 @@ public class FilteringApples{
 		});
 		System.out.println(redApples2);
 
+
+		List<Apple> java8Apples = filter(inventory, (Apple apple) -> "red".equals(apple.getColor()));
 	}
 
-	public static List<Apple> filterGreenApples(List<Apple> inventory){
+	//old school
+	public static List<Apple> filterGreenApplesOldSchool(List<Apple> inventory){
 		List<Apple> result = new ArrayList<>();
 		for(Apple apple: inventory){
 			if("green".equals(apple.getColor())){
@@ -48,7 +62,7 @@ public class FilteringApples{
 		return result;
 	}
 
-	public static List<Apple> filterApplesByColor(List<Apple> inventory, String color){
+	public static List<Apple> filterApplesByColorOldSchool(List<Apple> inventory, String color){
 		List<Apple> result = new ArrayList<>();
 		for(Apple apple: inventory){
 			if(apple.getColor().equals(color)){
@@ -58,7 +72,7 @@ public class FilteringApples{
 		return result;
 	}
 
-	public static List<Apple> filterApplesByWeight(List<Apple> inventory, int weight){
+	public static List<Apple> filterApplesByWeightOldSchool(List<Apple> inventory, int weight){
 		List<Apple> result = new ArrayList<>();
 		for(Apple apple: inventory){
 			if(apple.getWeight() > weight){
@@ -112,6 +126,8 @@ public class FilteringApples{
 		}
 	}
 
+	//Function that returns boolean!
+	//This is simillar to strategy design pattern! Encapsulate and use it at runtime.
 	interface ApplePredicate{
 		public boolean test(Apple a);
 	}

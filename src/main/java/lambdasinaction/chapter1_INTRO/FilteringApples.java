@@ -1,4 +1,4 @@
-package lambdasinaction.chapter1;
+package lambdasinaction.chapter1_INTRO;
 
 import java.util.*;
 import java.util.function.Predicate;

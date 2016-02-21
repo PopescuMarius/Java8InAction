@@ -1,4 +1,4 @@
-package lambdasinaction.chapter1;
+package lambdasinaction.chapter1_INTRO;
 
 import java.io.File;
 import java.io.FileFilter;

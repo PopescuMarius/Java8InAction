@@ -1,4 +1,4 @@
-package lambdasinaction.chap2;
+package lambdasinaction.chapter2_INTRO;
 
 public class MeaningOfThis
 {
