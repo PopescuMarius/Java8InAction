@@ -1,4 +1,4 @@
-package lambdasinaction.chap3;
+package lambdasinaction.chapter3_LAMBDAS;
 
 import java.io.*;
 public class ExecuteAround {
@@ -11,6 +11,7 @@ public class ExecuteAround {
 
         System.out.println("---");
 
+		//Now that I isolated the func in a FunctionaInterface I can pass LAMBDAS and obtain different behaviours
 		String oneLine = processFile((BufferedReader b) -> b.readLine());
 		System.out.println(oneLine);
 
@@ -20,20 +21,20 @@ public class ExecuteAround {
 	}
 
     public static String processFileLimited() throws IOException {
-        try (BufferedReader br =
-                     new BufferedReader(new FileReader("lambdasinaction/chap3/data.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Marius\\IdeaProjects\\Java8InAction\\src\\main\\java\\lambdasinaction\\chapter3_LAMBDAS\\data.txt"))) {
             return br.readLine();
         }
     }
 
 
 	public static String processFile(BufferedReaderProcessor p) throws IOException {
-		try(BufferedReader br = new BufferedReader(new FileReader("lambdasinaction/chap3/data.txt"))){
+		try(BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Marius\\IdeaProjects\\Java8InAction\\src\\main\\java\\lambdasinaction\\chapter3_LAMBDAS\\data.txt"))){
 			return p.process(br);
 		}
 
 	}
 
+	@FunctionalInterface
 	public interface BufferedReaderProcessor{
 		public String process(BufferedReader b) throws IOException;
 

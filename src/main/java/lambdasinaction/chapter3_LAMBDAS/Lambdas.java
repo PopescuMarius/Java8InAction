@@ -1,4 +1,4 @@
-package lambdasinaction.chap3;
+package lambdasinaction.chapter3_LAMBDAS;
 
 import java.util.*;
 
@@ -13,8 +13,10 @@ public class Lambdas {
 		List<Apple> inventory = Arrays.asList(new Apple(80,"green"), new Apple(155, "green"), new Apple(120, "red"));
 
 		// [Apple{color='green', weight=80}, Apple{color='green', weight=155}]	
+		//IT is the same as using an anonymous class that implements that interface but using lambda I only care about the
+		//parameters and return. So I need an APPLE as parameter and a return of BOOLEAN.
 		List<Apple> greenApples = filter(inventory, (Apple a) -> "green".equals(a.getColor()));
-		System.out.println(greenApples);
+		System.out.println("with lambda :" + greenApples);
 
 
 		Comparator<Apple> c = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
@@ -26,6 +28,8 @@ public class Lambdas {
 
 	public static List<Apple> filter(List<Apple> inventory, ApplePredicate p){
 		List<Apple> result = new ArrayList<>();
+		//for this argument(apple) my lambda will return a boolean. It respects the contract of the interface, it doesn't care about the
+		// naming of the function :) just the argument and the return. If you change this it will not compile :)
 		for(Apple apple : inventory){
 			if(p.test(apple)){
 				result.add(apple);
@@ -67,6 +71,8 @@ public class Lambdas {
 		}
 	}
 
+	//this is a functional interface. if you add another method then you won't be able to use the lambda.
+	//You cah use the annotation FunctionalInterface (the same principle as @Override)
 	interface ApplePredicate{
 		public boolean test(Apple a);
 	}
