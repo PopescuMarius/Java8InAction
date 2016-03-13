@@ -1,8 +1,7 @@
-package lambdasinaction.chap4;
+package lambdasinaction.chapter4_STREAMS;
 
 import java.util.*;
 import java.util.stream.*;
-import static java.util.stream.Collectors.toList;
 
 
 public class StreamVsCollection {

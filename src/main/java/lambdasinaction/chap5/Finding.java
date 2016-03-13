@@ -1,10 +1,9 @@
 package lambdasinaction.chap5;
-import lambdasinaction.chap4.*;
+import lambdasinaction.chapter4_STREAMS.*;
 
-import java.util.stream.*;
 import java.util.*;
 
-import static lambdasinaction.chap4.Dish.menu;
+import static lambdasinaction.chapter4_STREAMS.Dish.menu;
 
 public class Finding{
 

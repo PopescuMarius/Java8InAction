@@ -1,4 +1,4 @@
-package lambdasinaction.chap4;
+package lambdasinaction.chapter4_STREAMS;
 import java.util.*;
 
 public class Dish {

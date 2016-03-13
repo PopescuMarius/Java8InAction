@@ -1,12 +1,9 @@
-package lambdasinaction.chap4;
+package lambdasinaction.chapter4_STREAMS;
 
 import java.util.*;
-import java.util.stream.*;
 
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
-
-import static lambdasinaction.chap4.Dish.menu;
 
 public class StreamBasic {
 

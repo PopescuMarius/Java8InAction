@@ -1,0 +1,38 @@
+
+1.  Streams are an update to the Java API that lets you manipulate collections of data in a
+   declarative way (you express a query rather than code an ad hoc implementation for it).
+
+2.  In coarsest terms, the difference between collections and streams has to do with when things are
+  computed. A collection is an in-memory data structure that holds all the values the data
+  structure currently has—every element in the collection has to be computed before it can be
+  added to the collection. (You can add things to, and remove them from, the collection, but at
+  each moment in time, every element in the collection is stored in memory; elements have to be
+  computed before becoming part of the collection.)
+    By contrast, a stream is a conceptually fixed data structure (you can’t add or remove elements
+  from it) whose elements are computed on demand. This gives rise to significant programming
+  benefits.
+
+3.  Note that, similarly to iterators, a stream can be traversed only once. After that a stream is said
+    to be consumed. You can get a new stream from the initial data source to traverse it again just
+    like for an iterator (assuming it’s a repeatable source like a collection; if it’s an I/O channel,
+    you’re out of luck).
+
+4.  Java 8’s introduction of streams—the internal iteration in the Streams library can automatically
+   choose a data representation and implementation of parallelism to match your hardware
+
+5.  The idea behind a stream pipeline is similar to the builder pattern.[1] In the builder pattern,
+    there’s a chain of calls to set up a configuration (for streams this is a chain of intermediate
+    operations), followed by a call to a build method (for streams this is a terminal operation).
+
+OPERATION   TYPE            RETURN TYPE    ARGUMENT of the operation   FUNCTION descriptor
+--------------------------------------------------------------------------------------------------------------------------------
+filter      Intermediate    Stream<T>      Predicate<T>                T -> boolean
+map         Intermediate    Stream<R>      Function<T, R>              T -> R
+limit       Intermediate    Stream<T>
+sorted      Intermediate    Stream<T>      Comparator<T>               (T, T) -> int
+distinct    Intermediate    Stream<T>
+forEach     Terminal        *Consumes each element from a stream and applies a lambda to each of them.The operation returns void.
+count       Terminal        *Returns the number of elements in a stream. The operation returns a long.
+collect     Terminal        *Reduces the stream to create a collection such as a List, a Map, or even an Integer.
+
+
