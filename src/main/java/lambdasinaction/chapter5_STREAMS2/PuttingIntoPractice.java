@@ -1,6 +1,4 @@
-package lambdasinaction.chap5;
-
-import lambdasinaction.chap5.*;
+package lambdasinaction.chapter5_STREAMS2;
 
 import java.util.*;
 
@@ -81,10 +79,16 @@ public class PuttingIntoPractice{
         
         
         // Query 7: What's the highest value in all the transactions?
+        //much easier to write this as below
         int highestValue = 
             transactions.stream()
                         .map(Transaction::getValue)
                         .reduce(0, Integer::max);
-        System.out.println(highestValue);      
+        System.out.println(highestValue);
+
+        //use min/max for this, not reduce
+        Optional<Transaction> smallestTransaction = transactions.stream()
+                                                   .min(comparing(Transaction::getValue));
+        System.out.println(smallestTransaction);
     }
 }

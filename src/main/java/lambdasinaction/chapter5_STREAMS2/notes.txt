@@ -1,0 +1,33 @@
+
+1. In a nutshell, the flatMap method lets you replace each value of a stream with another stream
+and then concatenates all the generated streams into a single stream.
+   You use flatMap to produce one flattened stream of words instead of multiple streams of words.
+
+2. int sum = numbers.stream().reduce(0, (a, b) -> a + b);
+  reduce takes two arguments:
+    - An initial value, here 0.
+    - A BinaryOperator<T> to combine two elements and produce a new value; here you use the lambda (a, b) -> a + b.
+
+3. In think that reduce is used in cases where you have to keep state from an element to another like below where I want the sum
+   off all the calories in the menu ... I would't want to iterate on the collection returned and sum it up ...
+
+    int calories = menu.stream()
+                 .map(Dish::getCalories)
+                 .reduce(0, Integer::sum);
+
+4. The iterate method takes an initial value, here 0, and a lambda (of type Unary-Operator<T>) to
+   apply successively on each new value produced
+
+        Stream.iterate(0, n -> n + 2)
+        .limit(10)
+        .forEach(System.out::println);
+
+   Similarly to the method iterate, the method generate lets you produce an infinite stream of
+   values computed on demand. But generate doesn’t apply successively a function on each new
+   produced value. It takes a lambda of type Supplier<T> to provide new values.
+
+        Stream.generate(Math::random)
+        .limit(5)
+        .forEach(System.out::println);
+
+5.

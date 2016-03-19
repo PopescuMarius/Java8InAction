@@ -1,4 +1,4 @@
-package lambdasinaction.chap5;
+package lambdasinaction.chapter5_STREAMS2;
 
 import lambdasinaction.chapter4_STREAMS.*;
 
@@ -10,9 +10,10 @@ public class Mapping{
 
     public static void main(String...args){
 
-        // map
-        List<String> dishNames = menu.stream()
+        // map function can be applied multiple times
+        List<Integer> dishNames = menu.stream()
                                      .map(Dish::getName)
+                                     .map(String::length)
                                      .collect(toList());
         System.out.println(dishNames);
 
@@ -25,7 +26,8 @@ public class Mapping{
 
         // flatMap
         words.stream()
-                 .flatMap((String line) -> Arrays.stream(line.split("")))
+                .map(w -> w.split(""))
+                 .flatMap(Arrays::stream)
                  .distinct()
                  .forEach(System.out::println);
 
